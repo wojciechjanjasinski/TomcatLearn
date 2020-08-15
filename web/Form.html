@@ -9,7 +9,7 @@
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
-<form method="get" action="URL">
+<form method="post" action="/ConverterServlet">
     <div class="container d-flex h-100">
         <div class="row justify-content-center align-self-center">
             <h1>Konwerter odległości</h1>
@@ -18,33 +18,33 @@
     <div class="container d-flex h-100">
         <label>
             Metre: <label>
-            <input type="number" name="ONE">
+            <input type="number" name="metre">
         </label><br/>
-            Centimeter: <label>
-            <input type="number" name="TWO">
+            Centimetre: <label>
+            <input type="number" name="centimetre">
         </label><br/>
             Millimeter: <label>
-            <input type="number" name="THREE">
+            <input type="number" name="millimetre">
         </label><br/>
     </div>
     <div class="container d-flex h-100">
         <button type="submit" class="btn btn-primary">Wyświetl</button>
     </div>
 </form>
-<form method="get" action="URL">
+<form method="post" action="/ConverterServlet">
     <div class="container d-flex h-100">
         <h1>Konwerter wagi</h1>
     </div>
     <div class="container d-flex h-100">
         <label>
             Kilogram: <label>
-            <input type="number" name="FOUR">
+            <input type="number" name="kilogram">
         </label><br/>
             Gram: <label>
-            <input type="number" name="FIVE">
+            <input type="number" name="gram">
         </label><br/>
             Milligram: <label>
-            <input type="number" name="SIX">
+            <input type="number" name="milligram">
         </label><br/>
     </div>
     <div class="container d-flex h-100">

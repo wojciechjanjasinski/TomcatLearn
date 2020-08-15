@@ -9,34 +9,37 @@ import java.io.PrintWriter;
 @WebServlet("/ConverterServlet")
 public class ConverterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String metre = request.getParameter("metre");
+        String centimetre = request.getParameter("cenimetre");
+        String millimetre = request.getParameter("millimetre");
+        String kilogram = request.getParameter("kilogram");
+        String gram = request.getParameter("gram");
+        String milligram = request.getParameter("milligram");
 
-        String numberFromUser = request.getParameter("numberFromUser");
-        PrintWriter writer = response.getWriter();
-        writer.println();
-        double parsedNumber;
-        try {
-            parsedNumber = Double.parseDouble(numberFromUser);
-        }catch (NumberFormatException exception){
-            System.err.println("Wprowadziłeś niepoprawną liczbę");
-        }
-        String converterChoice = null;
+        double parsedMetre = Double.parseDouble(metre);
+        double parsedCentimetre = Double.parseDouble(centimetre);
+        double parsedMillimetre = Double.parseDouble(millimetre);
+        double parsedKilogram = Double.parseDouble(kilogram);
+        double parsedGram = Double.parseDouble(gram);
+        double parsedMilligram = Double.parseDouble(milligram);
 
-        final String ONE = "one"; //z metrów na centymetry i z metrów na milimetry
-        final String TWO = "two"; //z centymetrów na metry i z centymetrów na milimetry
-        final String THREE = "three"; //z milimetrów na centymetry i z milimetrów na metry
-        final String FOUR = "four"; //z kilogramów na gramy i z kilogramów na miligramy
-        final String FIVE = "five"; //z gramów na kilogramy i z gramów na miligramy
-        final String SIX = "six"; //z miligramów na gramy i z miligramów na kilogramy
-        final String pause = " ";
-        final String theMessageToUser = "Szanowny użytkowniku! Niestety podałeś nieprawidłowe dane i nie mogę przeprowadzić konwersji";
-        String userChoice = switch (converterChoice) {
-            case ONE -> DistanceConverter.fromMetreToCentimetreConverter(parsedNumber) + pause + DistanceConverter.fromMetreToMillimetre(parsedNumber);
-            case TWO -> DistanceConverter.fromCentimetreToMetre(parsedNumber) + pause + DistanceConverter.fromCentimetreToMillimetre(parsedNumber);
-            case THREE -> DistanceConverter.fromMillimetreToCentimetre(parsedNumber) + pause + DistanceConverter.fromMillimetreToMetre(parsedNumber);
-            case FOUR -> WeightConverter.fromKilogramToGram(parsedNumber) + pause + WeightConverter.fromKilogramToMilligram(parsedNumber);
-            case FIVE -> WeightConverter.fromGramToKilogram(parsedNumber) + pause + WeightConverter.fromGramToMilligram(parsedNumber);
-            case SIX -> WeightConverter.fromMilligramToGram(parsedNumber) + pause + WeightConverter.fromMilligramToKilogram(parsedNumber);
-            default -> theMessageToUser;
-        };
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html");
+        java.io.PrintWriter printWriter = response.getWriter();
+        DistanceConverter.fromMetreToCentimetreAndMillimetre(parsedMetre);
+        DistanceConverter.fromCentimetreToMetreAndMillimetre(parsedCentimetre);
+        DistanceConverter.fromMillimetreToCentimetreAndMetre(parsedMillimetre);
+
+        WeightConverter.fromKilogramToGramAndMilligram(parsedKilogram);
+        WeightConverter.fromGramToKilogramAndMilligram(parsedGram);
+        WeightConverter.fromMilligramToGramAndKilogram(parsedMilligram);
+
+        printWriter.print(DistanceConverter.fromMetreToCentimetreAndMillimetre(parsedMetre));
+        printWriter.print(DistanceConverter.fromCentimetreToMetreAndMillimetre(parsedCentimetre));
+        printWriter.print(DistanceConverter.fromMillimetreToCentimetreAndMetre(parsedMillimetre));
+
+        printWriter.print(WeightConverter.fromKilogramToGramAndMilligram(parsedKilogram));
+        printWriter.print(WeightConverter.fromGramToKilogramAndMilligram(parsedGram));
+        printWriter.print(DistanceConverter.fromMillimetreToCentimetreAndMetre(parsedMillimetre));
     }
 }
