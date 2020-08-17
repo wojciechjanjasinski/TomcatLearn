@@ -14,6 +14,22 @@ public class ConverterServlet extends HttpServlet {
         String centimetre = request.getParameter("centimetre");
         String millimetre = request.getParameter("millimetre");
 
+        if (metre != null) {
+            if (metre.equals("")) {
+                System.out.println("cośtam");
+            }
+        }
+        if (centimetre != null) {
+            if (centimetre.equals("")) {
+                System.out.println("cośtam");
+            }
+        }
+        if (millimetre != null) {
+            if (millimetre.equals("")) {
+                System.out.println("cośtam");
+            }
+        }
+
         double parsedMetre = Double.parseDouble(metre);
         double parsedCentimetre = Double.parseDouble(centimetre);
         double parsedMillimetre = Double.parseDouble(millimetre);
