@@ -1,4 +1,4 @@
-package TextStatistics;
+package text_statistics;
 
 public class TestMain {
     public static void main(String[] args) {

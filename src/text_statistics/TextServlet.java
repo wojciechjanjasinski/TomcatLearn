@@ -1,4 +1,4 @@
-package TextStatistics;
+package text_statistics;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,11 +13,11 @@ public class TextServlet extends HttpServlet {
         response.setContentType("text/html; charset=iso-8859-2");
         response.setCharacterEncoding("iso-8859-2");
         java.io.PrintWriter printWriter = response.getWriter();
-        printWriter.print(text);
-        printWriter.print(TextStatistics.countCharsWithSpaces(text));
-        printWriter.print(TextStatistics.countCharsWithoutSpaces(text));
-        printWriter.print(TextStatistics.countWords(text));
-        printWriter.print(TextStatistics.palindromeTest(text));
+        printWriter.println(text);
+        printWriter.println("ilość znaków ze spacjami wynosi: " + TextStatistics.countCharsWithSpaces(text));
+        printWriter.println("ilość znaków bez spacji wynosi: " + TextStatistics.countCharsWithoutSpaces(text));
+        printWriter.println("ilość słów wynosi: " + TextStatistics.countWords(text));
+        printWriter.println("Czy tekst jest palindromem? " +TextStatistics.palindromeTest(text));
     }
 
 }

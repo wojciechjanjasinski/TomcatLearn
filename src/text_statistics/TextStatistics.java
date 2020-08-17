@@ -1,4 +1,4 @@
-package TextStatistics;
+package text_statistics;
 
 public class TextStatistics {
     public static int countCharsWithSpaces(String fromUser){
